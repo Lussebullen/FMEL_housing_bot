@@ -1,0 +1,4 @@
+# Ignore ChromeDriver
+chrome-win64
+
+.env
