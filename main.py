@@ -22,8 +22,8 @@ while True:
     try:
         if len(dates) != 0:
             notify_dates("Available!!!", dates)
-        else:
-            notify_dates("No Housing",["No available housing"])
+        # else:
+        #     notify_dates("No Housing",["No available housing"])
     except:
         error_count += 1
 
