@@ -27,5 +27,7 @@ while True:
     except:
         error_count += 1
 
+    print(f"Cumulative error count: {error_count}")
+    print(f"Available dates: {dates}")
     # Sleep 30 minutes
     time.sleep(60*30)

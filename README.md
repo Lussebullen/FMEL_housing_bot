@@ -1,2 +1,6 @@
-Download ChromeDriver at:
-https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/114.0.5735.133/win64/chrome-win64.zip
+# FMEL Bot
+
+This is a bot I created to search for first-come-first-served housing in Lausanne, where
+the website didn't have a proper api or date filtering search function. 
+
+It is an automated housing availability search bot.

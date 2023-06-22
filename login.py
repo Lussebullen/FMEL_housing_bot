@@ -10,9 +10,12 @@ import time
 import datetime
 
 def fmel_navigate():
+    
+    ######################## Login #############################
+
     options = Options()
     # Leave window open when done if True
-    options.add_experimental_option("detach", True)
+    options.add_experimental_option("detach", False)
     driver = webdriver.Chrome(service=Service(ChromeDriverManager()
                                             .install()), options=options)
 
@@ -50,7 +53,8 @@ def fmel_navigate():
 
     time.sleep(3)
 
-    # Parse potential dates
+    ######################## Parse Dates #############################
+
     start_dates = {}
 
     dates = driver.find_elements(By.XPATH,"//span[@class='ui-notification-content multiline markdown']/ul/li")
@@ -59,6 +63,8 @@ def fmel_navigate():
         day_of_week = datetime.datetime.strptime(date_string, '%d %b %Y').strftime('%a')
         start_date = day_of_week + ", " + date_string
         start_dates[start_date] = False
+
+    ######################## Check Dates #############################
 
     LACKING_RESULTS = "Currently not available"
     available_dates = []
@@ -78,13 +84,16 @@ def fmel_navigate():
         
         body = results.get_attribute('innerHTML')
 
-        # Add available housing to list
-        if LACKING_RESULTS not in body:
-            available_dates.append(date)
+        try:
+            # Add available housing to list
+            if LACKING_RESULTS not in body:
+                available_dates.append(date)
+        except:
+            available_dates.append(date + "- atypical")
     
         back_button = driver.find_element(By.CSS_SELECTOR,"button[aria-label='Go Back']")
         back_button.send_keys(Keys.RETURN)
         confirm_button = driver.find_element(By.CSS_SELECTOR,"button[aria-label='Yes']")
         confirm_button.send_keys(Keys.RETURN)
-        
+
     return available_dates
