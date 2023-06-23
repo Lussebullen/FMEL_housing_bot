@@ -19,15 +19,7 @@ while True:
     except:
         error_count += 1
 
-    try:
-        if len(dates) != 0:
-            notify_dates("Available!!!", dates)
-        # else:
-        #     notify_dates("No Housing",["No available housing"])
-    except:
-        error_count += 1
-
     print(f"Cumulative error count: {error_count}")
     print(f"Available dates: {dates}")
     # Sleep 30 minutes
-    time.sleep(60*30)
+    time.sleep(60*15)

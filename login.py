@@ -8,6 +8,8 @@ from os import getenv
 from dotenv import load_dotenv
 import time
 import datetime
+from notify import notify_dates
+
 
 def fmel_navigate():
     
@@ -88,8 +90,10 @@ def fmel_navigate():
             # Add available housing to list
             if LACKING_RESULTS not in body:
                 available_dates.append(date)
+                notify_dates("Available!!!",[date])
         except:
             available_dates.append(date + "- atypical")
+            notify_dates("Atypical",[date])
     
         back_button = driver.find_element(By.CSS_SELECTOR,"button[aria-label='Go Back']")
         back_button.send_keys(Keys.RETURN)
