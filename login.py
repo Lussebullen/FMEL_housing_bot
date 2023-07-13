@@ -90,7 +90,7 @@ def fmel_navigate():
             # Add available housing to list
             if LACKING_RESULTS not in body:
                 available_dates.append(date)
-                notify_dates("Available!!!",[date])
+                notify_dates("Available!!!",[date, body])
         except:
             available_dates.append(date + "- atypical")
             notify_dates("Atypical",[date])
